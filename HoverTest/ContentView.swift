@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     let actions = ["book", "pencil", "trash"]
-   
+    @State private var hover = false
     
     var body: some View {
         ZStack {
@@ -19,6 +19,19 @@ struct ContentView: View {
                Image(systemName: "globe")
             }
             .hoverEffect()
+            .offset(y: -300)
+            
+            HStack {
+                RoundedRectangle(cornerRadius: 10)
+                .foregroundColor(Color("Primary"))
+                .shadow(radius: 20)
+                .frame(minWidth: 180,  maxWidth:250, minHeight: 180, maxHeight: 180)
+                .scaleEffect(hover ? 1.05 : 1.0)
+                .onHover{ hover in
+                    self.hover = hover
+                }
+                .animation(.default)
+            }
             
             VStack {
                 HStack {
