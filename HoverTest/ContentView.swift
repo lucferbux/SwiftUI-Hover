@@ -19,6 +19,23 @@ struct ContentView: View {
                Image(systemName: "globe")
             }
             .hoverEffect()
+            
+            VStack {
+                HStack {
+                    Spacer()
+                    ForEach(actions, id: \.self) { action in
+                        Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
+                            Image(systemName: action)
+                                .frame(width: 30, height: 30, alignment: .center)
+                        }
+                        .padding(5)
+                        .hoverEffect()
+                    }
+                    
+                }
+                .padding()
+                Spacer()
+            }
         }
     }
 }
