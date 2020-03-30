@@ -19,7 +19,6 @@ struct ContentView: View {
                Image(systemName: "globe")
             }
             .hoverEffect()
-            
             VStack {
                 HStack {
                     Spacer()
@@ -29,9 +28,8 @@ struct ContentView: View {
                                 .frame(width: 30, height: 30, alignment: .center)
                         }
                         .padding(5)
-                        .hoverEffect()
+                        .hoverEffect(.lift)
                     }
-                    
                 }
                 .padding()
                 Spacer()
