@@ -21,7 +21,6 @@ struct ContentView: View {
             }
             .hoverEffect()
             .offset(y: -300)
-            
             HStack {
                 RoundedRectangle(cornerRadius: 10)
                 .foregroundColor(Color("Primary"))
@@ -41,12 +40,7 @@ struct ContentView: View {
                     }
                 )
                 .animation(.default)
-                
-                
-                
-                
             }
-            
             VStack {
                 HStack {
                     Spacer()
