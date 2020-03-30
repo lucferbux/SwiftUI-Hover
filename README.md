@@ -5,6 +5,8 @@
 
 Swift Example of new Hover Effect
 
+![Example Video](meta/capture.gif)
+
 ## Requirements
 
 - iOS 13.0+
