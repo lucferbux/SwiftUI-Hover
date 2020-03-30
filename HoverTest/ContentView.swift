@@ -9,19 +9,10 @@
 import SwiftUI
 
 struct ContentView: View {
-    let actions = ["book", "pencil", "trash"]
     @State private var hover = false
     @State private var click = false
-    
     var body: some View {
         ZStack {
-            HStack {
-               Text("Hello World")
-               Image(systemName: "globe")
-            }
-            .hoverEffect()
-            .offset(y: -300)
-            
             HStack {
                 RoundedRectangle(cornerRadius: 10)
                 .foregroundColor(Color("Primary"))
@@ -41,27 +32,6 @@ struct ContentView: View {
                     }
                 )
                 .animation(.default)
-                
-                
-                
-                
-            }
-            
-            VStack {
-                HStack {
-                    Spacer()
-                    ForEach(actions, id: \.self) { action in
-                        Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
-                            Image(systemName: action)
-                                .frame(width: 30, height: 30, alignment: .center)
-                        }
-                        .padding(5)
-                        .hoverEffect()
-                    }
-                    
-                }
-                .padding()
-                Spacer()
             }
         }
     }
