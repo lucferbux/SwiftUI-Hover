@@ -9,16 +9,36 @@
 import SwiftUI
 
 struct ContentView: View {
-    let actions = ["book", "pencil", "trash"]
-   
-    
+    func getHoveredLabel() -> AnyView {
+        if #available(iOS 13.4, *) {
+            return AnyView(
+                LabelWorldHover()
+            )
+        } else {
+            return AnyView(
+                LabelWorld()
+            )
+        }
+    }
     var body: some View {
         ZStack {
-            HStack {
-               Text("Hello World")
-               Image(systemName: "globe")
-            }
-            .hoverEffect()
+            getHoveredLabel()
+        }
+    }
+}
+
+@available(iOS 13.4, *)
+struct LabelWorldHover: View {
+    var body: some View {
+        LabelWorld()
+        .hoverEffect()
+    }
+}
+struct LabelWorld: View {
+    var body: some View {
+        HStack {
+           Text("Hello World")
+           Image(systemName: "globe")
         }
     }
 }
