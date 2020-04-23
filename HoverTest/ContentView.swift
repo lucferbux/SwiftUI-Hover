@@ -9,36 +9,34 @@
 import SwiftUI
 
 struct ContentView: View {
-    func getHoveredLabel() -> AnyView {
-        if #available(iOS 13.4, *) {
-            return AnyView(
-                LabelWorldHover()
-            )
-        } else {
-            return AnyView(
-                LabelWorld()
-            )
-        }
-    }
+    @State var counter = 0
+    @State var enabled = true
+    
     var body: some View {
-        ZStack {
-            getHoveredLabel()
+        VStack(spacing: 40) {
+            Toggle(isOn: $enabled) {
+                Text("Text Enabled")
+            }
+            .padding()
+            .background(Color.init(red: 0.9, green: 0.9, blue: 0.9))
+            
+            
+            LabelWorld().padding().hoverEffectSafe(enabled)
+            
+            Button("Pressed \(counter) time\(counter == 1 ? "" : "s")") {
+                self.counter += 1
+                }.padding().hoverEffectSafe(enabled)
+            
+            
         }
     }
 }
 
-@available(iOS 13.4, *)
-struct LabelWorldHover: View {
-    var body: some View {
-        LabelWorld()
-        .hoverEffect()
-    }
-}
 struct LabelWorld: View {
     var body: some View {
         HStack {
-           Text("Hello World")
-           Image(systemName: "globe")
+            Text("Hello World")
+            Image(systemName: "globe")
         }
     }
 }
@@ -46,5 +44,19 @@ struct LabelWorld: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+
+extension View {
+    func hoverEffectSafe(_ enabled: Bool = true) -> AnyView {
+        guard enabled && ProcessInfo().isOperatingSystemAtLeast(OperatingSystemVersion(majorVersion: 13, minorVersion: 4, patchVersion: 0)) else { return AnyView(self)}
+        
+            if #available(iOS 13.4, *) {
+                return AnyView(hoverEffect())
+            } else {
+                return AnyView(self)
+            }
+       
     }
 }
