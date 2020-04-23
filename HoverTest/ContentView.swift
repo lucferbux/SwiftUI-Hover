@@ -50,7 +50,7 @@ struct ContentView_Previews: PreviewProvider {
 
 extension View {
     func hoverEffectSafe(_ enabled: Bool = true) -> AnyView {
-        guard enabled && ProcessInfo().isOperatingSystemAtLeast(OperatingSystemVersion(majorVersion: 13, minorVersion: 4, patchVersion: 0)) else { return AnyView(self)}
+        guard enabled else { return AnyView(self)}
         
             if #available(iOS 13.4, *) {
                 return AnyView(hoverEffect())
